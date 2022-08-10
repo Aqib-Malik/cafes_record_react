@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import Swal from "sweetalert2";
 import {
   BrowserRouter as Router,
   Routes,
@@ -20,6 +21,27 @@ class NavBar extends Component {
         super(props);
     }
     state = {  }
+    logout(){
+      console.log("logout")
+      Swal.fire({ 
+
+        title: 'Are you sure?',  
+        icon: 'warning',  
+        confirmButtonColor: '#3085d6',  
+        cancelButtonColor: '#d33', 
+
+    text: "Are you sure you want to Logout?",
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Yes'
+}).then(function(result) { 
+    if (result.value) {
+      localStorage.removeItem("token");
+      window.location.reload(); 
+            
+    }   
+    });
+          }
     render() { 
         return (  <Navbar bg="dark" variant="dark" expand="lg">
         <Container fluid>
@@ -33,8 +55,9 @@ class NavBar extends Component {
             >
               <Nav.Link><Link to="/" style={{color:"white",textDecoration: 'none'}}> Home</Link></Nav.Link>
               <Nav.Link><Link to="new" style={{color:"white",textDecoration: 'none'}}>Add New</Link></Nav.Link>
-              <Nav.Link><Link to="new" style={{color:"white",textDecoration: 'none'}}>Log In</Link></Nav.Link>
+              {/* <Nav.Link><Link to="login" style={{color:"white",textDecoration: 'none'}}>Log In</Link></Nav.Link> */}
               <Nav.Link><Link to="signup" style={{color:"white",textDecoration: 'none'}}>Sign Up</Link></Nav.Link>
+              {/* <Nav.Link onClick={this.logout()}>Log Out</Nav.Link> */}
               {/* <Nav.Link><Link to="detail" style={{color:"white",textDecoration: 'none'}}>Detail</Link></Nav.Link> */}
               {/* <Route path='/detail' element={<Detail tittle="axc"/>}/> */}
               {/* <NavDropdown title="Link" id="navbarScrollingDropdown">
@@ -51,7 +74,10 @@ class NavBar extends Component {
                 Link
               </Nav.Link> */}
             </Nav>
-            <Form className="d-flex">
+            <Button variant="outline-success" onClick={this.logout}>Logout</Button>
+            {/* <Nav.Link>Log Out</Nav.Link> */}
+
+            {/* <Form className="d-flex">
               <Form.Control
                 type="search"
                 placeholder="Search"
@@ -59,7 +85,7 @@ class NavBar extends Component {
                 aria-label="Search"
               />
               <Button variant="outline-success">Search</Button>
-            </Form>
+            </Form> */}
           </Navbar.Collapse>
         </Container>
       </Navbar>

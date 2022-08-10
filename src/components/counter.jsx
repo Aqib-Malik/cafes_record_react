@@ -14,7 +14,8 @@ class Counter extends Component {
 
         this.state = {
             items: [],
-            DataisLoaded: false
+            DataisLoaded: false,
+            updateShow:false
         };
     }
 
@@ -26,7 +27,7 @@ class Counter extends Component {
         fetch(
             "http://localhost:8080/api/cafe/getall",
             {
-                
+                // mode: 'no-cors',
                 // headers:{
                 //     'Authorization':localStorage.getItem("token")//"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNhZmkiLCJlbWFpbCI6InNhZmlAZ28uY29tIiwiZXhwIjoxNjYwMDY0NDQxfQ.Gg6YbwgUG77IqKbf9S79P1nLxryU5uo6kFYUkDhCpAU"//localStorage.getItem('token')
                 // }
@@ -124,13 +125,18 @@ class Counter extends Component {
         });  }
 
     render() {
-
+        //  this.state.updateShow?
+        
         const { DataisLoaded, items } = this.state;
         if (!DataisLoaded) return <div>
             <h1> Pleses wait some time.... </h1> </div>;
 
         return (
+            
             <div style={{backgroundColor: "#8fc4b7",padding:"50px"}} className="gradient-custom">
+                {/* <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                          <button type="button" className="btn btn-primary btn-lg" style={{marginLeft:"700px"}}>Log Out</button>
+                        </div> */}
                 <div>
                 <h1>Islamabad's Cafe<span class="badge badge-secondary">Records</span></h1>
  

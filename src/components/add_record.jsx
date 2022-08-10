@@ -6,6 +6,9 @@ class add_record extends Component {
   constructor(props) {
     super(props);
   }
+  
+  
+  
   state = {
     name: "",
     location: "",
