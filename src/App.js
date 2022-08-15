@@ -9,6 +9,7 @@ import Info from './components/Info';
 import Uptadedata from './components/Uptadedata';
 import Signup from './components/Signup';
 import Login from './components/Login';
+import Home from './components/Home';
 import Detail from './components/detail/detail';
 import axios from 'axios';
 
@@ -140,23 +141,19 @@ class App extends Component {
 
     <div>
       
-      {
-        localStorage.getItem('token')==null?//this.state.login?
-      <div>
-        <Login/>
-        {/* <input type="text" value={this.state.email} onChange={this.onchange} name="email"/><br/><br/> */}
-        {/* <input type="password" value={this.state.password} onChange={this.onchange} name="password"/><br/><br/> */}
-        {/* <input type="password" onChange={(event)=>{this.setState({password:event.target.value})}}/><br/><br/> */}
-        {/* <button onClick={()=>{this.login()}}>Login</button> */}
-      </div>
-       :
+      {/* <Home/> */}
        <BrowserRouter>
     <NavBar/>
     {/* <Link to="/detail">Detail</Link>
     <br/>
     <Link to="/">Home</Link> */}
       <Routes>
-        <Route path='/' element={<Counter/>}/>
+      {localStorage.getItem('token')==null?
+                <Route path='/' element={<Login/>}/>            
+                 :               
+                  <Route path='/' element={<Counter/>}/>}
+                   {/* <Route path='/' element={<Counter/>}/> */}
+              {/* } <Route path='/' element={<Counter/>}/> */}
         <Route path='/new' element={<Add_record/>}/>
         <Route path='/detail' element={<Info/>}/>
         <Route path='/update' element={<Uptadedata/>}/>
@@ -165,7 +162,7 @@ class App extends Component {
       </Routes>
     </BrowserRouter>
 
-  } 
+  
     </div>
   );
 }

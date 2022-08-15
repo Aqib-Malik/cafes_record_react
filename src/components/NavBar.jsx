@@ -21,6 +21,7 @@ class NavBar extends Component {
         super(props);
     }
     state = {  }
+    
     logout(){
       console.log("logout")
       Swal.fire({ 
@@ -43,7 +44,10 @@ class NavBar extends Component {
     });
           }
     render() { 
-        return (  <Navbar bg="dark" variant="dark" expand="lg">
+        return ( 
+          <>
+          {localStorage.getItem('token')!=null? 
+          <Navbar bg="dark" variant="dark" expand="lg">
         <Container fluid>
           <Navbar.Brand href="#"><Link to="/" style={{color:"white",textDecoration: 'none'}}> Islamabad Cafe's</Link></Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
@@ -53,10 +57,11 @@ class NavBar extends Component {
               style={{ maxHeight: '100px' }}
               navbarScroll
             >
-              <Nav.Link><Link to="/" style={{color:"white",textDecoration: 'none'}}> Home</Link></Nav.Link>
+              {localStorage.getItem('token')!=null?
+  <Nav.Link><Link to="/" style={{color:"white",textDecoration: 'none'}}> Home</Link></Nav.Link>:<div></div>} 
+              {localStorage.getItem('token')!=null?
               <Nav.Link><Link to="new" style={{color:"white",textDecoration: 'none'}}>Add New</Link></Nav.Link>
-              {/* <Nav.Link><Link to="login" style={{color:"white",textDecoration: 'none'}}>Log In</Link></Nav.Link> */}
-              <Nav.Link><Link to="signup" style={{color:"white",textDecoration: 'none'}}>Sign Up</Link></Nav.Link>
+              :<div></div>}             {/* <Nav.Link><Link to="login" style={{color:"white",textDecoration: 'none'}}>Log In</Link></Nav.Link> */}
               {/* <Nav.Link onClick={this.logout()}>Log Out</Nav.Link> */}
               {/* <Nav.Link><Link to="detail" style={{color:"white",textDecoration: 'none'}}>Detail</Link></Nav.Link> */}
               {/* <Route path='/detail' element={<Detail tittle="axc"/>}/> */}
@@ -74,7 +79,8 @@ class NavBar extends Component {
                 Link
               </Nav.Link> */}
             </Nav>
-            <Button variant="outline-success" onClick={this.logout}>Logout</Button>
+            {localStorage.getItem('token')!=null?
+  <Button variant="outline-success" onClick={this.logout}>Logout</Button>:<div></div>} 
             {/* <Nav.Link>Log Out</Nav.Link> */}
 
             {/* <Form className="d-flex">
@@ -88,7 +94,8 @@ class NavBar extends Component {
             </Form> */}
           </Navbar.Collapse>
         </Container>
-      </Navbar>
+      </Navbar>:<div></div>}
+      </>
       );
     }
 }

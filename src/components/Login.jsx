@@ -8,6 +8,7 @@ import {
   // Switch
 
 } from 'react-router-dom';
+
 class Login extends Component {
     constructor(props) {
         super(props);
@@ -128,10 +129,10 @@ class Login extends Component {
                         </div>
                         {/* <Link to="signup" style={{color:"white",textDecoration: 'none'}}>if u dont have an account?signup</Link> */}
 
-                        
+                        {/* <button type="button" class="btn btn-warning"><Link to="/signup" style={{color:"white",textDecoration: 'none'}}>Update</Link></button> */}
                       </form>
                       
-                    {/* <Link to="signup" style={{color:"white",textDecoration: 'none'}}>if u dont have an account?signup</Link> */}
+                    <Link to="signup" style={{color:"blue",textDecoration: 'none',marginLeft:"50px"}}>if u dont have an account?signup</Link>
 
                     </div>
                     <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">

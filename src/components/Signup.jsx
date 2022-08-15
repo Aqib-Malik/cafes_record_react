@@ -1,8 +1,17 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import Swal from "sweetalert2";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+  // Switch
+
+} from 'react-router-dom';
 // import './in.css'
 import './signupp.css'
+import Cafe from "../models/cafe"
 class Signup extends Component {
   constructor(props) {
     super(props);
@@ -72,6 +81,7 @@ class Signup extends Component {
     })
   }
   render() {
+    console.log(Cafe.name);
     return (<>
       <section className="vh-100 gradient-custom">
         <div className="container h-100">
@@ -129,6 +139,7 @@ class Signup extends Component {
                         </div>
 
                       </form>
+                      <Link to="/" style={{color:"blue",textDecoration: 'none',marginLeft:"50px"}}>Allready have an account?Log in</Link>
 
                     </div>
                     <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
