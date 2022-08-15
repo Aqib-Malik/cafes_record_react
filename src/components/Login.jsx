@@ -40,7 +40,10 @@ class Login extends Component {
         })
       
         }).then((Response)=>{
+          // alert(Response.status)
+
             console.log(Response);
+            if(Response.status==200){
           Response.json().then(body => {
             console.log(body);
             localStorage.setItem('token',body.token)
@@ -56,6 +59,14 @@ class Login extends Component {
           this.setState({
             login:true
           })
+        }
+        else{
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!',
+          });
+        }
           // console.log(Response.json())
     
           // Response.JSON().then((result)=>{
